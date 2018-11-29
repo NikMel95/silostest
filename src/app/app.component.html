@@ -1,0 +1,25 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="indicator__list" >
+  <div class="indicator__list-item" *ngFor="let item of towers;">
+    <div class="indicator__list-item-title">{{ item.title }}</div>
+    <div [ngClass]="'indicator__list-item-value ' + getStatus(item.value, item.minValue, item.maxValue)">{{ getPercentTower(item.value, item.minValue, item.maxValue).toFixed(0) }}%</div>
+    <div class="indicator__list-item-tank">
+      <div class="indicator__list-item-tank-part"></div>
+      <div class="indicator__list-item-tank-part"></div>
+      <div class="indicator__list-item-tank-part"></div>
+      <div class="indicator__list-item-tank-part"></div>
+      <div class="indicator__list-item-tank-label label1"></div>
+      <div class="indicator__list-item-tank-label label2"></div>
+      <div class="indicator__list-item-tank-label label3"></div>
+      <div class="indicator__list-item-tank-label label4"></div>
+      <div class="indicator__list-item-tank-label label5"></div>
+      <div class="indicator__list-item-tank-value" [ngStyle]="{'height': getHeightIndicator(item.value, item.minValue, item.maxValue) == 0 ? '0px' : 'calc(' + getHeightIndicator(item.value, item.minValue, item.maxValue).toFixed(2) + '% - 8px)'}"></div>
+    </div>
+    <div class="indicator__list-item-funnel"><div class="elem"></div></div>
+    <div class="indicator__list-item-cont">
+      <div class="indicator__list-item-cont-title">Масса карналита</div>
+      <div class="indicator__list-item-cont-value">{{ formatNumbSpace(item.value) }}</div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
