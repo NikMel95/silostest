@@ -1,17 +1,9 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
+const serveStatic = require('serve-static');
 const fs = require("fs");
-
-const app = express();
-const port = 5000;
-const clientDir = '';
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Static files
-app.use(express.static(path.join(__dirname, clientDir + '/dist/frontend')));
+app = express();
+app.use(serveStatic(__dirname + '/dist/frontend'));
 
 app.get('/api/towers', function(req, res) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -27,9 +19,8 @@ app.get('/api/towers', function(req, res) {
   });
   res.status(200);
 });
-
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, clientDir + '/dist/frontend', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist/frontend', 'index.html'));
 });
-
-app.listen(port, () => console.log(`Port server: ${port}`));
+var port = process.env.PORT || 5000;
+app.listen(port);
