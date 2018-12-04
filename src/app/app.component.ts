@@ -35,7 +35,10 @@ export class AppComponent implements OnInit {
   }
 
   public getPercentTower(value, min, max) {
-    return value * 100/(max - min);
+    if(min > value)
+      return 0;
+    else
+      return (value - min) * 100/(max - min);
   }
 
   public getHeightIndicator(value, min, max) {

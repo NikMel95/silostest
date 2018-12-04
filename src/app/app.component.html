@@ -2,7 +2,13 @@
 <div class="indicator__list" >
   <div class="indicator__list-item" *ngFor="let item of towers;">
     <div class="indicator__list-item-title">{{ item.title }}</div>
-    <div [ngClass]="'indicator__list-item-value ' + getStatus(item.value, item.minValue, item.maxValue)">{{ getPercentTower(item.value, item.minValue, item.maxValue).toFixed(0) }}%</div>
+    <div [ngClass]="'indicator__list-item-value ' + getStatus(item.value, item.minValue, item.maxValue)">
+      {{ getPercentTower(item.value, item.minValue, item.maxValue) > 100 ? 
+        '>100' :
+        getPercentTower(item.value, item.minValue, item.maxValue).toFixed(0)
+      }}
+      %
+    </div>
     <div class="indicator__list-item-tank">
       <div class="indicator__list-item-tank-part"></div>
       <div class="indicator__list-item-tank-part"></div>

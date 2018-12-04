@@ -9,8 +9,8 @@
   {
     "id": "id2",
     "title": "Уровень карналита в силосной башне №2",
-    "value": 998,
-    "minValue": 0,
+    "value": 1650,
+    "minValue": 300,
     "maxValue": 1650
   },
   {
